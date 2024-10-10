@@ -1,5 +1,7 @@
+# nom du workflow
 name: CI
 
+# Déclencheur du workflow
 on:
   push:
     branches: [ "main" ]
@@ -7,21 +9,34 @@ on:
     branches: [ "main" ]
   workflow_dispatch:
 
+# Définition des jobs
 jobs:
   dbt:
     runs-on: ubuntu-latest
 
     steps:
+      # Vérifie le code source
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up DBT environment
-        uses: docker://fishtownanalytics/dbt:latest  # Utiliser l'image Docker DBT
+      # Installe Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
 
+      # Installe les dépendances
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install dbt bigquery
+
+      # Exécute dbt debug
       - name: Run dbt debug
         run: |
           dbt debug
 
+      # Exécute dbt test
       - name: Run dbt test
         run: |
           dbt test
