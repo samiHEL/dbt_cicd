@@ -1,0 +1,17 @@
+sources:
+  - name: salesforce
+    tables:
+      - name: Account
+      - name: Opportunity
+      - name: Case
+      - name: Lead
+      - name : RecordType
+      - name: LeadHistory
+      - name: OpportunityHistory
+      - name: AccountContactRelation
+      - name: Subscription__c
+      - name: AccountTeamMember
+      - name: User
+      - name: MarketData__c
+      - name: Invoice__c
+      - name: CaseHistory

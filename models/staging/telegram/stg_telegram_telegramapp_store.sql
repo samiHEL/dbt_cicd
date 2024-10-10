@@ -1,0 +1,28 @@
+SELECT 
+id AS TelegramStoreId,
+group_id AS TelegramGroupId,
+store_manager_id AS StoreManagerId,
+history_channel_id AS HistoryChannelId,
+service_account_id AS ServiceAccountId,
+country,
+language,
+location,
+is_active AS IsActive,
+store_type AS Type,
+currency_id AS IsoCurrencyCode,
+button_group AS ButtonGroup,
+allow_sharing AS AllowSharing,
+is_demo_store AS IsDemoStore,
+remove_videos AS RemoveVideos,
+last_recap_reference AS LastRecapReference,
+recap_frequency_days AS RecapFrequencyDays,
+confirmation_on_theft AS IsTheft,
+get_theft_stopped_price AS IsTheftStoppedPrice,
+allow_sharing_with_parent AS AllowSharingParent,
+confirmation_on_no_action AS ConfirmationNoAction,
+send_theft_price_response AS SendTheftPriceResponse,
+send_theft_escaped_feedback AS SendTheftEscapedFeedback,
+send_theft_stopped_feedback AS SendTheftStoppedFeedback,
+video_expiration_duration AS VideoExpiration
+FROM {{source('telegram', 'telegramapp_store')}}
+QUALIFY ROW_NUMBER() OVER(PARTITION BY Id ORDER BY _airbyte_extracted_at ASC) = 1

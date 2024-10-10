@@ -1,0 +1,4 @@
+sources:
+  - name: lucca
+    tables:
+      - name: Users

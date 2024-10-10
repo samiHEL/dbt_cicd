@@ -1,0 +1,8 @@
+sources:
+  - name: telegram
+    tables:
+      - name: telegramapp_telegramalertmessage
+      - name: telegramapp_groupmessage
+      - name: telegramapp_telegramalertlabel
+      - name: telegramapp_store
+      - name: telegramapp_telegramuser

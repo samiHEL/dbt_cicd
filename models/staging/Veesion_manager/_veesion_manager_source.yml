@@ -1,0 +1,10 @@
+sources:
+  - name: veesion_manager
+    tables:
+      - name: core_store
+      - name: core_timezone
+      - name: core_buttonstype
+      - name: core_channel
+      - name: core_videorecorder
+      - name: core_relevance
+      - name: core_missedtheft
